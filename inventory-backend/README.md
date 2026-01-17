@@ -1,98 +1,275 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+📦 Inventory Management System (Backend)
+📌 Overview
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is a backend system built to manage inventory with configurable stock outflow strategies.
+Each business can define how inventory is consumed during a sale using one of the following strategies:
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+FIFO – First In, First Out
 
-## Description
+FEFO – First Expiry, First Out
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+BATCH – Explicit batch-wise deduction
 
-## Project setup
+The system ensures:
 
-```bash
-$ npm install
-```
+Correct inventory deduction
 
-## Compile and run the project
+Transactional safety
 
-```bash
-# development
-$ npm run start
+Auditability of stock movement
 
-# watch mode
-$ npm run start:dev
+Easy extensibility for future strategies (e.g., LIFO)
 
-# production mode
-$ npm run start:prod
-```
+🛠 Tech Stack
 
-## Run tests
+Backend Framework: NestJS
 
-```bash
-# unit tests
-$ npm run test
+ORM: TypeORM
 
-# e2e tests
-$ npm run test:e2e
+Database: PostgreSQL
 
-# test coverage
-$ npm run test:cov
-```
+Language: TypeScript
 
-## Deployment
+API Documentation: Swagger
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+Testing: Jest
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+🚀 Setup Instructions
+1️⃣ Clone the Repository
+git clone <repository-url>
+cd inventory-management
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+2️⃣ Install Dependencies
+npm install
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+3️⃣ Configure Environment Variables
 
-## Resources
+Create a .env file:
 
-Check out a few resources that may come in handy when working with NestJS:
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+DB_NAME=inventory_db
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+4️⃣ Run Database Migrations (if applicable)
+npm run typeorm migration:run
 
-## Support
+5️⃣ Start the Application
+npm run start:dev
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+Application runs at:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+http://localhost:3000
 
-## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Swagger UI:
+
+http://localhost:3000/api/docs
+
+🗄 Database Schema / Models
+🏢 Business
+Column	Description
+id	UUID
+name	Business name
+out_mode	FIFO / FEFO / BATCH
+
+Defines how inventory is deducted during sales.
+
+📦 Product
+Column	Description
+id	UUID
+product_code	Unique product identifier
+name	Product name
+created_at	Created timestamp
+updated_at	Updated timestamp
+📥 Inventory Batches
+Column	Description
+id	UUID
+business_id	Business owning the stock
+product_id	Product reference
+batch_no	Batch identifier (unique per product)
+quantity	Available stock
+purchase_date	Stock inward date
+expiry_date	Expiry date (nullable)
+🛒 Sales
+Column	Description
+id	UUID
+business_id	Business
+product_id	Product
+quantity	Total sold quantity
+sale_reference	Unique reference (idempotency)
+created_at	Sale timestamp
+📊 Sale Deductions (Audit)
+Column	Description
+sale_id	Sale reference
+batch_id	Batch deducted
+batch_no	Batch number
+quantity	Quantity deducted
+
+Provides full audit trail of inventory movement.
+
+🔁 Inventory Outflow Logic
+1️⃣ FIFO (First In, First Out)
+
+Stock is deducted from the oldest batch (by purchase_date)
+
+If one batch is insufficient, deduction continues to the next batch
+
+📌 Example:
+
+Batch A (10 units)
+Batch B (10 units)
+Sale = 15 units
+→ Batch A = 10
+→ Batch B = 5
+
+2️⃣ FEFO (First Expiry, First Out)
+
+Stock with the earliest expiry date is deducted first
+
+Batches with NULL expiry are treated as last priority
+
+📌 This prevents wastage of expiring stock.
+
+3️⃣ BATCH Mode
+
+Stock is deducted only from the specified batch
+
+If the batch does not have enough stock → sale fails
+
+No partial deduction across batches
+
+📌 Ensures strict batch-level control.
+
+🔐 Transaction & Data Integrity
+
+Sale creation and inventory deduction happen inside a single database transaction
+
+If stock is insufficient → transaction is rolled back
+
+Prevents partial or inconsistent stock updates
+
+♻️ Idempotent Sale API
+
+Each sale request requires a saleReference
+
+Duplicate requests with the same reference:
+
+Do not deduct stock again
+
+Return the original sale response
+
+This protects against:
+
+Network retries
+
+Duplicate API calls
+
+🧪 How to Test the APIs
+➕ Create Product
+
+POST /products
+
+{
+  "productCode": "PROD-001",
+  "name": "Laptop"
+}
+
+➕ Add Inventory (Batch)
+
+POST /inventory/batches
+
+{
+  "businessId": "uuid",
+  "productId": "uuid",
+  "batchNo": "BATCH-01",
+  "quantity": 20,
+  "purchaseDate": "2025-01-01",
+  "expiryDate": "2025-06-01"
+}
+
+🛒 Create Sale
+
+POST /sales
+
+{
+  "businessId": "uuid",
+  "productId": "uuid",
+  "quantity": 15,
+  "saleReference": "ORDER-123"
+}
+
+
+Response
+
+{
+  "sale_id": "uuid",
+  "deductions": [
+    { "batch_no": "BATCH-01", "quantity": 10 },
+    { "batch_no": "BATCH-02", "quantity": 5 }
+  ]
+}
+
+📊 Stock Summary
+
+GET /inventory/summary/{businessId}/{productId}
+
+Returns:
+
+Total available quantity
+
+Batch-wise stock details
+
+🧠 Assumptions Made
+
+product_code is globally unique
+
+batch_no is unique per product
+
+Batches with NULL expiry are sold last in FEFO
+
+Stock cannot go negative
+
+Sale without sufficient stock always fails
+
+Inventory deduction happens only via Sale API
+
+🧪 Testing
+
+Unit tests written for sale logic using Jest
+
+Strategy pattern allows mocking FIFO / FEFO / BATCH behavior
+
+Edge cases covered:
+
+Insufficient stock
+
+Duplicate sale requests
+
+Missing batch in BATCH mode
+
+✅ Key Design Highlights
+
+Strategy Pattern for inventory outflow
+
+Transaction-safe sale processing
+
+Audit-friendly deduction records
+
+Clean, extensible architecture
+
+Easy to add new strategies (e.g., LIFO)
+
+🏁 Conclusion
+
+This system demonstrates:
+
+Real-world backend design
+
+Correct inventory handling
+
+Clean architecture principles
+
+Production-ready API practices
